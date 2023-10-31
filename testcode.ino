@@ -39,6 +39,12 @@ void setup() {
   _D0[104] = 1;
   _D0[107] = 1;
   _D0[108] = 1;
+  for(int i = 1; i<=400; i++){
+    if( i !=3 || i !=4 || i !=5 || i !=6 || i != 101 || i != 104 || i != 107 || i != 108){
+      _D0[i] = 0;
+    }
+  }
+  
 
   // Configure the holding registers
   rtu.configureHoldingRegisters(_D0, 400);
@@ -110,7 +116,7 @@ void loop() {
     _D0[222] = 0;
     _D0[223] = 1;
   }
-  if (!isnan(ammonia) && (ammonia > 0 || ammonia < 1023){
+  if (!isnan(ammonia) && (ammonia > 0 || ammonia < 1023)){
 
     _D0[224] = ammoniaValue_h;
     _D0[225] = ammoniaValue_l;
