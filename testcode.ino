@@ -8,11 +8,11 @@ CM1106_I2C cm1106_i2c;
 #define CM1107
 #define DHTPIN 2     // AM2305B(DHT22) 센서의 데이터 핀 설정
 #define DHTTYPE DHT22   // 사용하는 센서 유형
+#define analogPin A0   // 암모니아 센서를 연결한 아날로그 핀
 
 const word bufSize = 256;
 byte buf[bufSize];
 
-const int analogPin = A0; // 암모니아 센서를 연결한 아날로그 핀
 
 ModbusRTUSlave rtu(Serial, buf);
 u16 _D0[400];
@@ -110,7 +110,7 @@ void loop() {
     _D0[222] = 0;
     _D0[223] = 1;
   }
-  if (!isnan(ammonia) && ammonia <= 250){
+  if (!isnan(ammonia) && (ammonia > 0 || ammonia < 1023){
 
     _D0[224] = ammoniaValue_h;
     _D0[225] = ammoniaValue_l;
