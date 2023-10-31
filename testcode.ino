@@ -116,7 +116,7 @@ void loop() {
     _D0[222] = 0;
     _D0[223] = 1;
   }
-  if (!isnan(ammonia) && (ammonia > 0 || ammonia < 1023)){
+  if (!isnan(ammonia) && ammonia >=0 && ammonia < 100){
 
     _D0[224] = ammoniaValue_h;
     _D0[225] = ammoniaValue_l;
